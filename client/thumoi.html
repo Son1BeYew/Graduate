@@ -1,198 +1,84 @@
-<!DOCTYPE html>
-<html lang="vi">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Thư Mời Tốt Nghiệp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      #studentAvatar {
+<div
+  style="
+    position: relative;
+    width: 100%;
+    max-width: 1800px;
+    min-height: 600px;
+    margin: -150px auto;
+    padding: 40px;
+    left: -14%;
+    border-radius: 16px;
+    background-image: url('./images/backgroundThuMoi.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  "
+>
+  <div
+    style="
+      position: absolute;
+      top: 120px;
+      left: 20%;
+      transform: translate(-50%, 0);
+      width: 250px;
+      height: 250px;
+      position: relative;
+    "
+  >
+    <!-- Ảnh người dùng upload -->
+    <img
+      id="previewImage"
+      src=""
+      style="
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
         object-fit: cover;
-        cursor: grab;
-        user-select: none;
         position: absolute;
         top: 0;
         left: 0;
-      }
+        z-index: 1;
+        background-color: white;
+      "
+    />
 
-      #invitation {
-        font-family: "Arial", sans-serif;
-        overflow: hidden;
-      }
+    <!-- Khung PNG đúng kích thước -->
+    <img
+      src="./images/khungThuMoi.png"
+      style="
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        z-index: 2;
+        pointer-events: none;
+      "
+    />
+  </div>
+</div>
 
-      .thu-moi {
-        font-family: "Dancing Script", cursive;
-        font-size: 40px;
-        color: #facc15; /* màu vàng */
-        font-weight: bold;
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-      }
-
-      #studentName {
-        font-size: 24px;
-        font-weight: bold;
-        color: #dc2626;
-      }
-
-      #invitation p,
-      #invitation h2,
-      #invitation h1 {
-        text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
-      }
-    </style>
-  </head>
-  <body class="bg-gray-100 p-6">
-    <div class="text-center mb-6">
-      <h2 class="text-2xl font-bold text-blue-700">🎓 Thiệp Mời Tốt Nghiệp</h2>
-    </div>
-
-    <div
-      id="invitation"
-      class="relative mx-auto w-[900px] h-[600px] shadow-xl rounded-lg border bg-[url('./images/backgroundThuMoi.png')] bg-cover bg-center"
-    >
-      <!-- Bên trái: Avatar -->
-      <div
-        class="absolute top-[100px] left-[30px] w-[350px] h-[400px] flex flex-col items-center z-10"
-      >
-        <div
-          id="avatarWrapper"
-          class="w-[260px] h-[260px] rounded-full bg-[url('./images/khungThuMoi.png')] bg-cover bg-center relative overflow-hidden"
-        >
-          <img
-            id="studentAvatar"
-            src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-            width="260"
-            height="260"
-            alt="Avatar"
-          />
-        </div>
-        <h2 class="text-3xl italic font-semibold text-gray-800 mt-3">
-          Graduation <span class="text-yellow-700">2025</span>
-        </h2>
-      </div>
-
-      <!-- Bên phải: Nội dung -->
-      <div class="absolute top-[40px] left-[420px] w-[460px] text-left z-10">
-        <div class="flex items-center justify-start space-x-3 mb-2">
-          <img src="./images/logo-hutech-1.png" class="h-10" />
-          <img src="./images/logo30nam.png" class="h-10" />
-          <img src="./images/logototnghiep.png" class="h-10" />
-        </div>
-
-        <h1 class="thu-moi mt-2">Thư mời</h1>
-
-        <p id="studentName" class="mt-1"></p>
-
-        <p class="italic text-purple-700 text-base mt-2">Đến tham dự</p>
-
-        <h2 class="text-yellow-500 text-lg font-bold mt-2">
-          LỄ TỐT NGHIỆP & TRAO BẰNG KỸ SƯ
-        </h2>
-        <h2 class="text-blue-800 text-lg font-semibold tracking-wide mb-1">
-          KHOA CÔNG NGHỆ THÔNG TIN
-        </h2>
-
-        <p class="text-base mt-3">
-          Thứ 4, <strong>18/6/2025</strong><br />
-          <strong>13:00 - 16:00</strong>
-        </p>
-
-        <p class="text-sm text-gray-800 italic mt-2">
-          Địa điểm: E3-05.01, HUTECH - Thủ Đức Campus
-        </p>
-      </div>
-    </div>
-
-    <!-- Nút -->
-    <div class="mt-10 text-center">
-      <label
-        for="fileInput"
-        class="inline-block bg-green-600 text-white px-4 py-2 rounded shadow hover:bg-green-700 cursor-pointer mr-4"
-      >
-        📤 Chọn ảnh từ máy
-      </label>
-      <input type="file" id="fileInput" accept="image/*" class="hidden" />
-
-      <button
-        onclick="captureImage()"
-        class="inline-block bg-blue-600 text-white px-4 py-2 rounded shadow hover:bg-blue-700"
-      >
-        📸 Tạo ảnh & Lưu
-      </button>
-    </div>
-
-    <script>
-      // Gán tên sinh viên từ localStorage
-      const name = localStorage.getItem("fullname") || "Sinh viên";
-      document.getElementById("studentName").innerText = name;
-
-      // Đổi ảnh avatar khi chọn file
-      document.getElementById("fileInput").addEventListener("change", (e) => {
-        const file = e.target.files[0];
-        if (!file) return;
-        const reader = new FileReader();
-        reader.onload = () => {
-          document.getElementById("studentAvatar").src = reader.result;
-        };
-        reader.readAsDataURL(file);
-      });
-
-      // Chụp ảnh từ HTML
-      function captureImage() {
-        html2canvas(document.getElementById("invitation")).then((canvas) => {
-          const dataUrl = canvas.toDataURL("image/png");
-          const link = document.createElement("a");
-          link.href = dataUrl;
-          link.download = "thu-moi-tot-nghiep.png";
-          link.click();
-        });
-      }
-
-      // Kéo và zoom ảnh avatar
-      const avatar = document.getElementById("studentAvatar");
-      let isDragging = false,
-        startX = 0,
-        startY = 0,
-        translateX = 0,
-        translateY = 0,
-        scale = 1;
-
-      avatar.addEventListener("mousedown", (e) => {
-        isDragging = true;
-        startX = e.clientX - translateX;
-        startY = e.clientY - translateY;
-        avatar.style.cursor = "grabbing";
-      });
-
-      document.addEventListener("mousemove", (e) => {
-        if (!isDragging) return;
-        translateX = e.clientX - startX;
-        translateY = e.clientY - startY;
-        updateTransform();
-      });
-
-      document.addEventListener("mouseup", () => {
-        isDragging = false;
-        avatar.style.cursor = "grab";
-      });
-
-      document
-        .getElementById("avatarWrapper")
-        .addEventListener("wheel", (e) => {
-          e.preventDefault();
-          const delta = e.deltaY > 0 ? -0.05 : 0.05;
-          scale = Math.min(3, Math.max(0.5, scale + delta));
-          updateTransform();
-        });
-
-      function updateTransform() {
-        avatar.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-      }
-    </script>
-  </body>
-</html>
+<!-- NÚT TẢI ẢNH -->
+<div
+  style="position: relative; width: 100%; text-align: center; margin-top: 40px"
+>
+  <button
+    onclick="document.getElementById('uploadAvatar').click()"
+    style="
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      margin-top: 150px;
+      margin-left: -1200px;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    "
+  >
+    Tải ảnh lên
+  </button>
+  <input id="uploadAvatar" type="file" accept="image/*" style="display: none" />
+</div>

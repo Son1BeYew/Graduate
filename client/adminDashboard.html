@@ -42,15 +42,15 @@
             class="flex items-center space-x-3 text-gray-700 hover:bg-blue-100 hover:text-blue-700 px-3 py-2 rounded transition"
           >
             <i class="bi bi-people text-lg"></i>
-            <span>aaa</span>
+            <span>Đăng Thông Báo</span>
           </a>
         </nav>
       </div>
 
-      <!-- FINANCIAL -->
+      <!-- Graduation -->
       <div>
         <p class="text-gray-400 text-xs mb-3 uppercase tracking-wider">
-          Financial
+          Lễ Tốt Nghiệp
         </p>
         <nav class="space-y-2">
           <a
@@ -70,30 +70,32 @@
         </nav>
       </div>
 
-      <!-- TOOLS -->
+      <!-- Tools -->
       <div>
-        <p class="text-gray-400 text-xs mb-3 uppercase tracking-wider">Tools</p>
+        <p class="text-gray-400 text-xs mb-3 uppercase tracking-wider">Khác</p>
         <nav class="space-y-2">
           <a
             href="#"
             class="flex items-center space-x-3 text-gray-700 hover:bg-blue-100 hover:text-blue-700 px-3 py-2 rounded transition"
           >
             <i class="bi bi-gear text-lg"></i>
-            <span>Settings</span>
+            <span>Cài Đặt</span>
           </a>
           <a
             href="#"
             class="flex items-center space-x-3 text-gray-700 hover:bg-blue-100 hover:text-blue-700 px-3 py-2 rounded transition"
           >
             <i class="bi bi-chat-dots text-lg"></i>
-            <span>Feedback</span>
+            <span>Thư Hỗ Trợ</span>
           </a>
+          <!-- ✅ Đăng xuất có onclick -->
           <a
             href="#"
-            class="flex items-center space-x-3 text-gray-700 hover:bg-blue-100 hover:text-blue-700 px-3 py-2 rounded transition"
+            onclick="logout()"
+            class="flex items-center space-x-3 text-gray-700 hover:bg-red-100 hover:text-red-600 px-3 py-2 rounded transition"
           >
-            <i class="bi bi-question-circle text-lg"></i>
-            <span>Help</span>
+            <i class="bi bi-box-arrow-right text-lg"></i>
+            <span>Đăng Xuất</span>
           </a>
         </nav>
       </div>
@@ -101,13 +103,20 @@
 
     <!-- Main content -->
     <main class="flex-1 p-10 bg-white shadow-inner rounded-lg m-6">
-      <h1 class="text-3xl font-bold text-gray-800 mb-4">
-        👋 Chào mừng, Admin!
-      </h1>
+      <h1 class="text-3xl font-bold text-gray-800 mb-4">👋 Xin Chào, Admin!</h1>
       <p class="text-gray-600 text-base">
         Bạn đang ở giao diện quản trị hệ thống. Hãy chọn chức năng từ menu bên
         trái để bắt đầu quản lý.
       </p>
     </main>
+
+    <!-- JS logout -->
+    <script>
+      function logout() {
+        localStorage.removeItem("accessToken");
+        sessionStorage.clear();
+        window.location.href = "./dangnhap.html";
+      }
+    </script>
   </body>
 </html>
