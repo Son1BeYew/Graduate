@@ -26,6 +26,7 @@ app.use(express.static(path.join(__dirname, "../client")));
 // API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/student", studentRoutes);
+app.use("/api/thongbao", require("./routes/thongbao"));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dangnhap.html"));
 });

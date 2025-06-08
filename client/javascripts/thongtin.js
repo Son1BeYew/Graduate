@@ -1,7 +1,10 @@
-const savedUser = JSON.parse(localStorage.getItem("user"));
-if (!savedUser) {
-  alert("Không có user");
-} else {
+function loadThongTin() {
+  const savedUser = JSON.parse(localStorage.getItem("user"));
+  if (!savedUser) {
+    alert("Không có user");
+    return;
+  }
+
   fetch(`http://localhost:5000/api/student/${savedUser.username}`)
     .then((res) => res.json())
     .then((data) => {
@@ -9,6 +12,7 @@ if (!savedUser) {
         alert(data.message || "Không có dữ liệu");
         return;
       }
+
       document.getElementById("studentName").textContent =
         data.fullname || "...";
       document.getElementById("studentId").textContent =

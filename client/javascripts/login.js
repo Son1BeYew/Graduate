@@ -25,7 +25,7 @@ document
         if (data.user.role === "admin") {
           window.location.href = "./adminDashboard.html";
         } else {
-          window.location.href = "./trangSV.html";
+          window.location.href = "./trangSV.html#info";
         }
       } else {
         message.textContent = "❌ " + data.message;
