@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Trang Sinh Viên</title>
+  </head>
+  <body class="bg-gray-50 text-gray-800 min-h-screen flex flex-col font-sans">
+    <!-- Header -->
+    <header
+      class="bg-gradient-to-r from-blue-600 to-blue-800 text-white shadow-md p-4 flex justify-between items-center"
+    >
+      <button id="menuToggle" class="text-2xl hover:text-yellow-300 transition">
+        ☰
+      </button>
+      <h1 class="text-xl md:text-2xl font-semibold tracking-wide">
+        🎓 Lễ Tốt Nghiệp - Hệ thống Sinh viên
+      </h1>
+    </header>
+
+    <!-- Sidebar -->
+    <aside
+      id="sidebar"
+      class="fixed top-0 left-0 h-full w-64 bg-white shadow-2xl transform -translate-x-full transition-transform z-40"
+    >
+      <div
+        class="p-4 border-b text-blue-700 font-bold text-lg tracking-wide bg-gray-50"
+      >
+        📘 Menu chức năng
+      </div>
+      <ul class="p-4 space-y-5 text-[15px]">
+        <li>
+          <a
+            href="#"
+            data-page="home.html"
+            class="block px-2 py-1 hover:bg-blue-100 rounded"
+            >🏠 Trang Chủ</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            data-page="thongtincanhan.html"
+            class="block px-2 py-1 hover:bg-blue-100 rounded"
+            >👤 Thông tin cá nhân</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            data-page="dangkitotnghiep.html"
+            class="block px-2 py-1 hover:bg-blue-100 rounded"
+            >📝 Đăng Kí Tốt Nghiệp</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            data-page="thumoi.html"
+            class="block px-2 py-1 hover:bg-blue-100 rounded"
+            >📨 Thư Mời</a
+          >
+        </li>
+        <li>
+          <a
+            href="#"
+            data-page="taikhoan.html"
+            class="block px-2 py-1 hover:bg-blue-100 rounded"
+            >💳 Tài Khoản</a
+          >
+        </li>
+        <li>
+          <button
+            id="logoutBtn"
+            class="w-full text-left text-red-500 hover:text-red-700 font-medium transition"
+          >
+            🚪 Đăng xuất
+          </button>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Overlay -->
+    <div
+      id="overlay"
+      class="fixed inset-0 bg-black bg-opacity-40 hidden z-30"
+    ></div>
+
+    <!-- Main Content -->
+    <main id="mainContent" class="flex-grow p-6 md:p-10 text-center">
+      <!-- Nội dung sẽ được load tại đây -->
+    </main>
+
+    <!-- Script -->
+    <script>
+      const user = JSON.parse(localStorage.getItem("user"));
+      const token = localStorage.getItem("token");
+
+      if (!user || !token) {
+        window.location.href = "dangnhap.html";
+      }
+
+      const sidebar = document.getElementById("sidebar");
+      const menuToggle = document.getElementById("menuToggle");
+      const overlay = document.getElementById("overlay");
+
+      // Toggle sidebar
+      menuToggle.addEventListener("click", () => {
+        sidebar.classList.toggle("-translate-x-full");
+        overlay.classList.toggle("hidden");
+      });
+
+      overlay.addEventListener("click", () => {
+        sidebar.classList.add("-translate-x-full");
+        overlay.classList.add("hidden");
+      });
+
+      // Đăng xuất
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+        window.location.href = "dangnhap.html";
+      });
+
+      // Load nội dung vào mainContent
+      const loadPage = (page) => {
+        fetch(page)
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById("mainContent").innerHTML = html;
+
+            if (page === "./thongtincanhan.html") {
+              const script = document.createElement("script");
+              script.src = "./javascripts/thongtin.js";
+              document.body.appendChild(script);
+            }
+          });
+      };
+
+      // Gắn sự kiện cho menu sidebar
+      document.querySelectorAll("a[data-page]").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const page = link.getAttribute("data-page");
+          loadPage(page);
+          sidebar.classList.add("-translate-x-full");
+          overlay.classList.add("hidden");
+        });
+      });
+
+      // Load mặc định
+      loadPage("home.html");
+    </script>
+  </body>
+</html>

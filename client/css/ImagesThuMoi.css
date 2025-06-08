@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+/* Ảnh avatar sinh viên */
+#studentAvatar {
+  object-fit: cover;
+  cursor: grab;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Khung thiệp */
+#invitation {
+  overflow: hidden;
+  font-family: "Arial", sans-serif;
+}
+
+/* Chữ “Thư mời” cách điệu */
+#invitation h1 {
+  font-family: "Dancing Script", cursive;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Tên sinh viên nổi bật */
+#studentName {
+  font-size: 24px;
+  font-weight: bold;
+  color: #b91c1c; /* Đỏ đậm */
+}
+
+/* Bóng nhẹ cho toàn bộ text */
+#invitation p,
+#invitation h2,
+#invitation h1 {
+  text-shadow: 0.5px 0.5px 1px rgba(0, 0, 0, 0.1);
+}
