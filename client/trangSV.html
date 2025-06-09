@@ -13,7 +13,7 @@
     />
     <script src="./javascripts/trangSV.js" defer></script>
     <script src="./javascripts/thongtin.js" defer></script>
-
+    <script src="./javascripts/login.js" defer></script>
     <style>
       * {
         box-sizing: border-box;
@@ -209,7 +209,10 @@
         <i class="fas fa-edit"></i> Đăng Kí Tốt Nghiệp
       </a>
 
-      <a href="thumoi.html"><i class="fas fa-envelope"></i> Thư Mời</a>
+      <a href="#" onclick="loadSection('thumoi.html', 'info', event)">
+        <i class="fas fa-envelope"></i> Thư Mời
+      </a>
+
       <a href="taikhoan.html"><i class="fas fa-id-card"></i> Tài Khoản</a>
       <a href="#" class="logout-link" onclick="logout()"
         ><i class="fas fa-sign-out-alt"></i> Đăng xuất</a
@@ -236,17 +239,31 @@
       }
 
       // Gọi file và inject vào content
-      function loadSection(path, targetId) {
+      function loadSection(path, targetId, event) {
         fetch(path)
           .then((res) => res.text())
           .then((html) => {
-            document.getElementById(targetId).innerHTML = html;
-            if (
-              path.includes("thongtincanhan") &&
-              typeof loadThongTin === "function"
-            ) {
-              loadThongTin();
+            const target = document.getElementById(targetId);
+            target.innerHTML = html;
+
+            // Gọi script sau khi inject xong
+            if (path.includes("thumoi")) {
+              const data = localStorage.getItem("studentInfo");
+              if (data) {
+                const student = JSON.parse(data);
+                const span = document.getElementById("studentName");
+                if (student?.fullname && span) {
+                  span.textContent = student.fullname;
+                }
+              }
             }
+
+            // Active menu
+            document
+              .querySelectorAll(".side-menu a")
+              .forEach((el) => el.classList.remove("active"));
+            if (event?.currentTarget)
+              event.currentTarget.classList.add("active");
           })
           .catch((err) => {
             document.getElementById(targetId).innerHTML =

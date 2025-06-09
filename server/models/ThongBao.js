@@ -1,7 +1,3 @@
-// ❌ Sai: bạn đang viết thế này
-// const router = require('router'); ← Sai thư viện
-
-// ✅ Đúng:
 const mongoose = require("mongoose");
 
 const ThongBaoSchema = new mongoose.Schema({

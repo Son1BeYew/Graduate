@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #fff;
+        padding: 40px;
+        text-align: center;
+      }
+      .frame {
+        border: 6px solid #1976d2;
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 700px;
+        margin: auto;
+      }
+      .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #1976d2;
+      }
+      h1 {
+        color: #d32f2f;
+        margin-top: 20px;
+      }
+      .info {
+        font-size: 18px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="frame">
+      <img src="{{avatarUrl}}" alt="Avatar" class="avatar" />
+      <h1>🎓 Thư Mời Tốt Nghiệp</h1>
+      <div class="info">
+        <p><strong>Họ tên:</strong> {{fullname}}</p>
+        <p><strong>MSSV:</strong> {{studentCode}}</p>
+        <p><strong>Thời gian:</strong> 7:30 - 11:30, Chủ Nhật, 20/07/2025</p>
+        <p><strong>Địa điểm:</strong> Hội trường A-08.20, Trường HUTECH</p>
+      </div>
+    </div>
+  </body>
+</html>
