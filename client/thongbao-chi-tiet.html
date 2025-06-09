@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+    <title>Chi tiết Thông báo</title>
+  </head>
+  <body class="bg-white min-h-screen flex flex-col text-[#005baa]">
+    <!-- HEADER -->
+    <header
+      class="flex items-center justify-between px-6 py-4 max-w-[1280px] mx-auto w-full"
+    >
+      <div class="flex items-center space-x-4">
+        <img
+          src="https://img5.thuthuatphanmem.vn/uploads/2021/07/14/logo-dai-hoc-hutech_012634748.png"
+          alt="HUTECH Logo"
+          style="width: 300px; height: 95px; transform: translateX(-130px)"
+        />
+      </div>
+      <nav
+        class="flex items-center space-x-10 text-lg font-normal -mt-12 ml-6 translate-x-20"
+      >
+        <a
+          href="./trangchu.html"
+          class="text-[#e4002b] font-bold border-b-4 border-transparent pb-1 hover:border-[#e4002b] transition"
+          >Trang Chủ</a
+        >
+        <a class="text-black hover:underline font-medium" href="#">Thông Báo</a>
+        <a class="text-black hover:underline font-medium" href="#">Hỗ Trợ</a>
+        <a
+          href="./dangnhap.html"
+          class="ml-6 bg-[#005baa] text-white text-base font-semibold px-5 py-2 rounded inline-block"
+          >Đăng Nhập</a
+        >
+      </nav>
+    </header>
+
+    <!-- MAIN -->
+    <main class="max-w-[1280px] mx-auto px-6 py-8">
+      <a href="trangchu.html" class="text-sm text-blue-600 underline"
+        >&larr; Quay về</a
+      >
+      <h1 id="tieuDe" class="text-3xl font-bold mt-4 mb-2"></h1>
+      <p id="ngayDang" class="text-gray-500 mb-4"></p>
+      <img
+        id="hinhAnh"
+        src=""
+        alt=""
+        class="w-full max-h-[400px] object-cover mb-6 rounded hidden"
+      />
+      <div
+        id="noiDung"
+        class="text-base leading-relaxed text-gray-800 whitespace-pre-line"
+      ></div>
+    </main>
+
+    <!-- SCRIPT -->
+    <script>
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+
+      if (!id) {
+        document.getElementById("noiDung").innerHTML =
+          "<p class='text-red-600'>Không tìm thấy ID.</p>";
+        throw new Error("Không có ID");
+      }
+
+      fetch(`http://localhost:5000/api/thongbao/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          if (!data || data.error || data.message) {
+            document.getElementById("noiDung").innerHTML =
+              "<p class='text-red-600'>Không tìm thấy thông báo.</p>";
+            return;
+          }
+
+          document.getElementById("tieuDe").textContent = data.tieuDe;
+          document.getElementById("ngayDang").textContent = new Date(
+            data.ngayDang
+          ).toLocaleDateString("vi-VN");
+          document.getElementById("noiDung").innerHTML =
+            data.noiDung || "<i>Không có nội dung</i>";
+
+          if (data.hinhAnh) {
+            const img = document.getElementById("hinhAnh");
+            img.src = data.hinhAnh;
+            img.classList.remove("hidden");
+          }
+        })
+        .catch((err) => {
+          document.getElementById("noiDung").innerHTML =
+            "<p class='text-red-600'>Lỗi khi tải dữ liệu.</p>";
+          console.error(err);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,107 @@
+<!-- Khung hiển thị thông tin -->
+<div
+  style="
+    border: 2px solid gray;
+    border-radius: 12px;
+    padding: 10px;
+    margin: -150px auto 20px;
+    max-width: 1200px;
+    background-color: #f8fafc;
+    margin-left: -200px;
+  "
+>
+  <div
+    class="bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-xl p-6 max-w-4xl mx-auto shadow-md"
+  >
+    <div class="flex items-start gap-6">
+      <!-- Avatar -->
+      <div style="flex-shrink: 0">
+        <img
+          id="studentAvatar"
+          src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+          alt="avatar"
+          style="
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border: 2px solid #bfdbfe;
+            border-radius: 6px;
+            background-color: #f0f0f0;
+          "
+        />
+      </div>
+
+      <!-- Thông tin -->
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+          font-size: 15px;
+          color: #1f2937;
+          font-weight: 500;
+          line-height: 1.8;
+        "
+      >
+        <div>
+          <i class="fas fa-user"></i> Họ tên: <span id="studentName"></span>
+        </div>
+        <div>
+          <i class="fas fa-id-badge"></i> Mã số sinh viên:
+          <span id="studentId"></span>
+        </div>
+        <div>
+          <i class="fas fa-envelope"></i> Email: <span id="studentEmail"></span>
+        </div>
+        <div>
+          <i class="fas fa-book"></i> Chương trình:
+          <span id="educationProgram"></span>
+        </div>
+        <div>
+          <i class="fas fa-graduation-cap"></i> Hệ đào tạo:
+          <span id="educationLevel"></span>
+        </div>
+        <div>
+          <i class="fas fa-building"></i> Khoa: <span id="faculty"></span>
+        </div>
+        <div>
+          <i class="fas fa-users"></i> Lớp: <span id="studentClass"></span>
+        </div>
+        <div>
+          <i class="fas fa-calendar-alt"></i> Niên khóa:
+          <span id="courseYear"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div
+  style="
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-left: -200px;
+    background: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    font-size: 14px;
+  "
+>
+  <strong>Trường hợp nếu thông tin sai bạn có thể chỉnh sửa.</strong>
+    <button
+      onclick="applyEdits()"
+      style="
+        background-color: #2563eb;
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      "
+    >
+      Chỉnh sửa thông tin 
+    </button>
+  </form>
+</div>
