@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 
 <head>
   <meta charset="utf-8" />
@@ -83,3 +84,141 @@
 </body>
 
 </html>
+=======
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body class="bg-white min-h-screen flex flex-col text-[#005baa]">
+    <header
+      class="flex items-center justify-between px-6 py-4 max-w-[1280px] mx-auto w-full"
+    >
+      <div class="flex items-center space-x-4">
+        <img
+          src="https://img5.thuthuatphanmem.vn/uploads/2021/07/14/logo-dai-hoc-hutech_012634748.png"
+          alt="HUTECH Logo"
+          style="width: 300px; height: 95px; transform: translateX(-130px)"
+        />
+      </div>
+      <nav
+        class="flex items-center space-x-10 text-lg font-normal -mt-12 ml-6 translate-x-20"
+      >
+        <a
+          href="./trangchu.html"
+          class="text-[#e4002b] font-bold border-b-4 border-transparent pb-1 hover:border-[#e4002b] transition"
+          >Trang Chủ</a
+        >
+        <a class="text-black hover:underline font-medium" href="thongbao.html"
+          >Thông Báo</a
+        >
+        <a class="text-black hover:underline font-medium" href="hotro.html"
+          >Hỗ Trợ</a
+        >
+        <a
+          href="./dangnhap.html"
+          class="ml-6 bg-[#005baa] text-white text-base font-semibold px-5 py-2 rounded inline-block"
+          >Đăng Nhập</a
+        >
+      </nav>
+    </header>
+
+    <main class="max-w-[1280px] mx-auto px-6 py-4">
+      <h2 class="text-2xl font-bold text-[#e4002b] mb-6">Thông báo mới nhất</h2>
+      <div id="news-list" class="space-y-6"></div>
+    </main>
+
+    <script>
+      fetch("http://localhost:5000/api/thongbao")
+        .then((res) => res.json())
+        .then((data) => {
+          const container = document.getElementById("news-list");
+          if (!Array.isArray(data)) return;
+
+          data.forEach((item) => {
+            const div = document.createElement("div");
+            div.innerHTML = `
+              <div class="border border-gray-200 p-4 rounded-md shadow-sm hover:shadow-md transition bg-white">
+                <a href="thongbao-chi-tiet.html?id=${
+                  item._id
+                }" class="text-xl font-semibold text-[#005baa] hover:underline">
+                  ${item.tieuDe}
+                </a>
+                <p class="text-gray-600 mt-1 text-sm">${new Date(
+                  item.ngayDang
+                ).toLocaleDateString("vi-VN")}</p>
+                <p class="mt-2 text-gray-800">${item.moTaNgan || ""}</p>
+                ${
+                  item.hinhAnh
+                    ? `<img src="${item.hinhAnh}" alt="Ảnh thông báo" class="mt-4 rounded shadow w-full max-h-64 object-cover" />`
+                    : ""
+                }
+              </div>
+            `;
+            container.appendChild(div);
+          });
+        })
+        .catch((err) => {
+          document.getElementById("news-list").innerHTML =
+            "<p class='text-red-600'>Không thể tải danh sách thông báo.</p>";
+          console.error("Lỗi tải dữ liệu:", err);
+        });
+    </script>
+    <style>
+      .page-transition {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: white;
+        z-index: 9999;
+        transition: opacity 0.5s ease;
+      }
+
+      .page-transition.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+
+    <div class="page-transition" id="transitionOverlay"></div>
+
+    <script>
+      // Khi trang vừa load xong → ẩn overlay
+      window.addEventListener("load", () => {
+        document.getElementById("transitionOverlay").classList.add("hide");
+      });
+
+      // Khi bấm chuyển trang → hiện lại overlay
+      document.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const href = link.getAttribute("href");
+          if (
+            href &&
+            !href.startsWith("#") &&
+            !href.startsWith("javascript:")
+          ) {
+            e.preventDefault();
+            document
+              .getElementById("transitionOverlay")
+              .classList.remove("hide");
+            setTimeout(() => {
+              window.location.href = href;
+            }, 300); // delay để hiệu ứng chạy
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+>>>>>>> 820bca714fa77e3868220336b80d8f14c2ee5027
