@@ -13,7 +13,11 @@
     />
     <script src="./javascripts/trangSV.js" defer></script>
     <script src="./javascripts/thongtin.js" defer></script>
+<<<<<<< HEAD
+
+=======
     <script src="./javascripts/login.js" defer></script>
+>>>>>>> 820bca714fa77e3868220336b80d8f14c2ee5027
     <style>
       * {
         box-sizing: border-box;
@@ -209,10 +213,14 @@
         <i class="fas fa-edit"></i> Đăng Kí Tốt Nghiệp
       </a>
 
+<<<<<<< HEAD
+      <a href="thumoi.html"><i class="fas fa-envelope"></i> Thư Mời</a>
+=======
       <a href="#" onclick="loadSection('thumoi.html', 'info', event)">
         <i class="fas fa-envelope"></i> Thư Mời
       </a>
 
+>>>>>>> 820bca714fa77e3868220336b80d8f14c2ee5027
       <a href="taikhoan.html"><i class="fas fa-id-card"></i> Tài Khoản</a>
       <a href="#" class="logout-link" onclick="logout()"
         ><i class="fas fa-sign-out-alt"></i> Đăng xuất</a
@@ -239,6 +247,19 @@
       }
 
       // Gọi file và inject vào content
+<<<<<<< HEAD
+      function loadSection(path, targetId) {
+        fetch(path)
+          .then((res) => res.text())
+          .then((html) => {
+            document.getElementById(targetId).innerHTML = html;
+            if (
+              path.includes("thongtincanhan") &&
+              typeof loadThongTin === "function"
+            ) {
+              loadThongTin();
+            }
+=======
       function loadSection(path, targetId, event) {
         fetch(path)
           .then((res) => res.text())
@@ -264,6 +285,7 @@
               .forEach((el) => el.classList.remove("active"));
             if (event?.currentTarget)
               event.currentTarget.classList.add("active");
+>>>>>>> 820bca714fa77e3868220336b80d8f14c2ee5027
           })
           .catch((err) => {
             document.getElementById(targetId).innerHTML =

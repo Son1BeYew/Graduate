@@ -5,14 +5,21 @@
     "cloudinary": "^1.41.3",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
+<<<<<<< HEAD
+=======
     "ejs": "^3.1.10",
+>>>>>>> 820bca714fa77e3868220336b80d8f14c2ee5027
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.15.1",
     "multer": "^2.0.1",
+<<<<<<< HEAD
+    "multer-storage-cloudinary": "^4.0.0"
+=======
     "multer-storage-cloudinary": "^4.0.0",
     "puppeteer": "^24.10.0",
     "stream": "^0.0.3"
+>>>>>>> 820bca714fa77e3868220336b80d8f14c2ee5027
   },
   "name": "new-folder",
   "version": "1.0.0",
