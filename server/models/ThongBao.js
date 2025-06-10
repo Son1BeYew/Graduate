@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const ThongBaoSchema = new mongoose.Schema({

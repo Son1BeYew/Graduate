@@ -1,6 +1,5 @@
 <!-- KHỐI BACKDROP -->
-<div
-  style="
+<div style="
     position: relative;
     width: 100%;
     max-width: 1800px;
@@ -14,10 +13,8 @@
     background-position: center;
     background-repeat: no-repeat;
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  "
->
-  <div
-    style="
+  ">
+  <div style="
       position: absolute;
       top: 120px;
       left: 20%;
@@ -25,13 +22,9 @@
       width: 250px;
       height: 250px;
       position: relative;
-    "
-  >
+    ">
     <!-- Ảnh người dùng upload -->
-    <img
-      id="previewImage"
-      src=""
-      style="
+    <img id="previewImage" src="" style="
         width: 250px;
         height: 250px;
         border-radius: 50%;
@@ -41,13 +34,10 @@
         left: 0;
         z-index: 1;
         background-color: white;
-      "
-    />
+      " />
 
     <!-- Khung PNG đúng kích thước -->
-    <img
-      src="./images/khungThuMoi.png"
-      style="
+    <img src="./images/khungThuMoi.png" style="
         width: 350px;
         height: 350px;
         object-fit: cover;
@@ -56,16 +46,14 @@
         left: -50px;
         z-index: 2;
         pointer-events: none;
-      "
-    />
+      " />
   </div>
 </div>
-<div
-  style="position: relative; width: 100%; text-align: center; margin-top: 40px"
->
-  <button
-    onclick="document.getElementById('uploadAvatar').click()"
-    style="
+
+<!-- NÚT TẢI ẢNH -->
+</div>
+<div style="position: relative; width: 100%; text-align: center; margin-top: 40px">
+  <button onclick="document.getElementById('uploadAvatar').click()" style="
       padding: 10px 20px;
       font-size: 16px;
       border: none;
@@ -75,8 +63,7 @@
       background-color: #007bff;
       color: white;
       cursor: pointer;
-    "
-  >
+    ">
     Tải ảnh lên
   </button>
   <input id="uploadAvatar" type="file" accept="image/*" style="display: none" />

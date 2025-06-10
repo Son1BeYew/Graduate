@@ -1,21 +1,85 @@
-<div
-  id="thuMoiContent"
-  style="padding: 30px; font-family: 'Roboto', sans-serif"
->
+<div style="
+    position: relative;
+    width: 100%;
+    max-width: 1800px;
+    min-height: 600px;
+    margin: -150px auto;
+    padding: 40px;
+    left: -14%;
+    border-radius: 16px;
+    background-image: url('./images/backgroundThuMoi.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  ">
+  <div style="
+      position: absolute;
+      top: 120px;
+      left: 20%;
+      transform: translate(-50%, 0);
+      width: 250px;
+      height: 250px;
+      position: relative;
+    ">
+    <!-- Ảnh người dùng upload -->
+    <img id="previewImage" src="" alt="" style="
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: white;
+      " />
+
+    <!-- Khung PNG đúng kích thước -->
+    <img src="./images/khungThuMoi.png" alt="" style="
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        z-index: 2;
+        pointer-events: none;
+      " />
+  </div>
+</div>
+
+<!-- NÚT TẢI ẢNH -->
+<div style="position: relative; width: 100%; text-align: center; margin-top: 40px">
+  <button onclick="document.getElementById('uploadAvatar').click()" style="
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      margin-top: 150px;
+      margin-left: -1200px;
+      border-radius: 8px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    ">
+    Tải ảnh lên
+  </button>
+  <input id="uploadAvatar" type="file" accept="image/*" style="display: none" />
+</div>
+=======
+<div id="thuMoiContent" style="padding: 30px; font-family: 'Roboto', sans-serif">
   <h2 style="font-size: 24px; color: #c62828; margin-bottom: 20px">
     🎓 Thư Mời Tham Dự Lễ Tốt Nghiệp
   </h2>
 
-  <div
-    style="
+  <div style="
       border: 2px dashed red;
       padding: 15px;
       background-color: #fff0f0;
       color: #b30000;
       font-weight: bold;
       margin-bottom: 25px;
-    "
-  >
+    ">
     ⚠️ Cảnh báo: Vui lòng không sử dụng ảnh nhạy cảm hoặc vi phạm chính sách.
     Nội dung thư mời sẽ được hiển thị công khai.
   </div>
@@ -43,9 +107,7 @@
   <!-- Chọn ảnh + Lưu -->
   <div style="margin-top: 30px; text-align: center">
     <input type="file" accept="image/*" id="avatarInput" />
-    <button
-      id="saveAvatarBtn"
-      style="
+    <button id="saveAvatarBtn" style="
         margin-left: 10px;
         padding: 6px 16px;
         background-color: #0d6efd;
@@ -53,22 +115,16 @@
         border: none;
         border-radius: 6px;
         cursor: pointer;
-      "
-    >
+      ">
       Lưu ảnh
     </button>
     <br />
-    <img
-      id="previewAvatar"
-      src=""
-      alt="Ảnh thư mời"
-      style="
+    <img id="previewAvatar" src="" alt="Ảnh thư mời" style="
         margin-top: 20px;
         max-width: 300px;
         border-radius: 12px;
         display: none;
-      "
-    />
+      " />
   </div>
 </div>
 
