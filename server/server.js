@@ -19,11 +19,6 @@ connectDB();
 
 // Middleware cho JSON
 app.use(express.json());
-<<<<<<< HEAD
-
-// Serve static files từ thư mục 'client'
-=======
->>>>>>> 820bca714fa77e3868220336b80d8f14c2ee5027
 app.use(express.static(path.join(__dirname, "../client")));
 
 // API Routes
