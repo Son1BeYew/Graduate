@@ -1,139 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link href="style.css" rel="stylesheet" />
-  </head>
-  <body class="bg-white min-h-screen flex flex-col text-[#005baa]">
-    <header
-      class="flex items-center justify-between px-6 py-4 max-w-[1280px] mx-auto w-full"
-    >
-      <div class="flex items-center space-x-4">
-        <img
-          src="https://img5.thuthuatphanmem.vn/uploads/2021/07/14/logo-dai-hoc-hutech_012634748.png"
-          alt="HUTECH Logo"
-          style="width: 300px; height: 95px; transform: translateX(-130px)"
-        />
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="style.css" rel="stylesheet" />
+</head>
+
+<body class="bg-white min-h-screen flex flex-col text-[#005baa]">
+  <header class="flex items-center justify-between px-6 py-4 max-w-[1280px] mx-auto w-full">
+    <div class="flex items-center space-x-4">
+      <img src="https://img5.thuthuatphanmem.vn/uploads/2021/07/14/logo-dai-hoc-hutech_012634748.png" alt="HUTECH Logo"
+        style="width: 300px; height: 95px; transform: translateX(-140px) translateY(-10px)" />
+    </div>
+
+    <nav class=" text-[18px] flex items-center -mt-12 ml-10 translate-x-20">
+      <div class="flex items-center space-x-16 font-bold">
+        <a href="./trangchu.html" class="text-red-600 relative py-2 pb-1 transition-all duration-300 hover:-translate-y-1 
+       after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1 
+       after:bg-red-600 after:rounded-[5px] hover:after:w-full">
+          Trang Chủ
+        </a>
+
+        <a href="thongbao.html" class="text-black relative py-2 pb-1 transition-all duration-300 hover:-translate-y-1 
+       after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1
+       after:bg-[#dc2626] after:rounded-[5px] hover:after:w-full">
+          Thông Báo
+        </a>
+
+        <a href="hotro.html" class="text-black relative py-2 pb-1 transition-all duration-300 hover:-translate-y-1 
+       after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-1
+       after:bg-[#dc2626] after:rounded-[5px] hover:after:w-full">
+          Hỗ Trợ
+        </a>
+
+        <a href="./dangnhap.html" class="bg-[#005baa] text-white text-base px-5 py-2 rounded-full inline-block
+       transition-transform duration-300 hover:scale-105">
+          Đăng Nhập
+        </a>
+
       </div>
-      <nav
-        class="flex items-center space-x-10 text-lg font-normal -mt-12 ml-6 translate-x-20"
-      >
-        <a
-          href="./trangchu.html"
-          class="text-[#e4002b] font-bold border-b-4 border-transparent pb-1 hover:border-[#e4002b] transition"
-          >Trang Chủ</a
-        >
-        <a class="text-black hover:underline font-medium" href="thongbao.html"
-          >Thông Báo</a
-        >
-        <a class="text-black hover:underline font-medium" href="hotro.html"
-          >Hỗ Trợ</a
-        >
-        <a
-          href="./dangnhap.html"
-          class="ml-6 bg-[#005baa] text-white text-base font-semibold px-5 py-2 rounded inline-block"
-          >Đăng Nhập</a
-        >
-      </nav>
-    </header>
+    </nav>
+  </header>
 
-    <main class="max-w-[1280px] mx-auto px-6 py-4">
-      <h2 class="text-2xl font-bold text-[#e4002b] mb-6">Thông báo mới nhất</h2>
-      <div id="news-list" class="space-y-6"></div>
-    </main>
+  <main class="text-[25px] font-bold mb-6 text-[#e4002b] text-center">
+    <h2 class="text-2xl font-bold text-[#e4002b] mb-6">THÔNG BÁO MỚI NHẤT</h2>
+    <div id="news-list" class="space-y-6"></div>
+  </main>
 
-    <script>
-      fetch("http://localhost:5000/api/thongbao")
-        .then((res) => res.json())
-        .then((data) => {
-          const container = document.getElementById("news-list");
-          if (!Array.isArray(data)) return;
+  <script>
+    fetch("http://localhost:5000/api/thongbao")
+      .then((res) => res.json())
+      .then((data) => {
+        const container = document.getElementById("news-list");
+        if (!Array.isArray(data)) return;
 
-          data.forEach((item) => {
-            const div = document.createElement("div");
-            div.innerHTML = `
+        data.forEach((item) => {
+          const div = document.createElement("div");
+          div.innerHTML = `
               <div class="border border-gray-200 p-4 rounded-md shadow-sm hover:shadow-md transition bg-white">
-                <a href="thongbao-chi-tiet.html?id=${
-                  item._id
-                }" class="text-xl font-semibold text-[#005baa] hover:underline">
+                <a href="thongbao-chi-tiet.html?id=${item._id
+            }" class="text-xl font-semibold text-[#005baa] hover:underline">
                   ${item.tieuDe}
                 </a>
                 <p class="text-gray-600 mt-1 text-sm">${new Date(
-                  item.ngayDang
-                ).toLocaleDateString("vi-VN")}</p>
+              item.ngayDang
+            ).toLocaleDateString("vi-VN")}</p>
                 <p class="mt-2 text-gray-800">${item.moTaNgan || ""}</p>
-                ${
-                  item.hinhAnh
-                    ? `<img src="${item.hinhAnh}" alt="Ảnh thông báo" class="mt-4 rounded shadow w-full max-h-64 object-cover" />`
-                    : ""
-                }
+                ${item.hinhAnh
+              ? `<img src="${item.hinhAnh}" alt="Ảnh thông báo" class="mt-4 rounded shadow w-full max-h-64 object-cover" />`
+              : ""
+            }
               </div>
             `;
-            container.appendChild(div);
-          });
-        })
-        .catch((err) => {
-          document.getElementById("news-list").innerHTML =
-            "<p class='text-red-600'>Không thể tải danh sách thông báo.</p>";
-          console.error("Lỗi tải dữ liệu:", err);
+          container.appendChild(div);
         });
-    </script>
-    <style>
-      .page-transition {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: white;
-        z-index: 9999;
-        transition: opacity 0.5s ease;
-      }
-
-      .page-transition.hide {
-        opacity: 0;
-        pointer-events: none;
-      }
-    </style>
-
-    <div class="page-transition" id="transitionOverlay"></div>
-
-    <script>
-      // Khi trang vừa load xong → ẩn overlay
-      window.addEventListener("load", () => {
-        document.getElementById("transitionOverlay").classList.add("hide");
+      })
+      .catch((err) => {
+        document.getElementById("news-list").innerHTML =
+          "<p class='text-red-600'>Không thể tải danh sách thông báo.</p>";
+        console.error("Lỗi tải dữ liệu:", err);
       });
+  </script>
 
-      // Khi bấm chuyển trang → hiện lại overlay
-      document.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", (e) => {
-          const href = link.getAttribute("href");
-          if (
-            href &&
-            !href.startsWith("#") &&
-            !href.startsWith("javascript:")
-          ) {
-            e.preventDefault();
-            document
-              .getElementById("transitionOverlay")
-              .classList.remove("hide");
-            setTimeout(() => {
-              window.location.href = href;
-            }, 300); // delay để hiệu ứng chạy
-          }
-        });
+
+  <div class="page-transition" id="transitionOverlay"></div>
+
+  <footer class="bg-[#005baa] text-white mt-[900px]">
+    <div class="max-w-[1280px] mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Cột 1: Logo và mô tả -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">MÔ TẢ</h3>
+        <p class="text-sm leading-6">Hệ thống đăng ký lễ tốt nghiệp trực tuyến giúp sinh viên đăng ký nhanh chóng và
+          thuận tiện, lưu giữ khoảnh khắc đáng nhớ trong ngày trọng đại.</p>
+      </div>
+
+      <!-- Cột 2: Liên kết nhanh -->
+      <div>
+        <h3 class="font-bold text-lg mb-4 ml-20">LIÊN KẾT</h3>
+        <ul class="space-y-2 text-sm ml-20">
+          <li><a href="./trangchu.html" class="hover:text-gray-300">Trang Chủ</a></li>
+          <li><a href="thongbao.html" class="hover:text-gray-300">Thông Báo</a></li>
+          <li><a href="hotro.html" class="hover:text-gray-300">Hỗ Trợ</a></li>
+          <li><a href="./dangnhap.html" class="hover:text-gray-300">Đăng Nhập</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 3: Thông tin liên hệ -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">PHÒNG CÔNG TÁC SINH VIÊN - HUTECH</h3>
+        <ul class="text-sm space-y-2">
+          <li><i class="fas fa-map-marker-alt mr-2"></i>475A Điện Biên Phủ, P.25, Q.Bình Thạnh, TP.HCM
+          </li>
+          <li><i class="fas fa-phone-alt mr-2"></i>0819 500 591 - 028 3512 0785</li>
+          <li><i class="fas fa-envelope mr-2"></i>congtacsinhvien@hutech.edu.vn</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-[#004080] text-center py-4 text-sm">
+      © 2025 HUTECH - Trường Đại học Công nghệ TP.HCM.
+    </div>
+  </footer>
+
+  <script>
+    // Khi trang vừa load xong → ẩn overlay
+    window.addEventListener("load", () => {
+      document.getElementById("transitionOverlay").classList.add("hide");
+    });
+
+    // Khi bấm chuyển trang → hiện lại overlay
+    document.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (
+          href &&
+          !href.startsWith("#") &&
+          !href.startsWith("javascript:")
+        ) {
+          e.preventDefault();
+          document
+            .getElementById("transitionOverlay")
+            .classList.remove("hide");
+          setTimeout(() => {
+            window.location.href = href;
+          }, 300); // delay để hiệu ứng chạy
+        }
       });
-    </script>
-  </body>
+    });
+  </script>
+</body>
+
 </html>
