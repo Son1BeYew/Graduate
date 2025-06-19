@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 const path = require("path");
 const authRoutes = require("./routes/authRoutes");
 const studentRoutes = require("./routes/studentRoutes");
-
+const thuMoiRoutes = require("./routes/thuMoiRoutes");
 dotenv.config();
 
 const app = express();
@@ -20,6 +20,7 @@ connectDB();
 
 // Middleware cho JSON
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../client")));
 
 // API Routes
@@ -29,6 +30,7 @@ app.use("/api/thongbao", require("./routes/thongbao"));
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../client/dangnhap.html"));
 });
+app.use("/api/thu-moi", thuMoiRoutes);  
 
 // Chạy server
 const PORT = process.env.PORT || 5000;

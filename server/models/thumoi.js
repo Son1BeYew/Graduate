@@ -1,19 +1,27 @@
+// models/ThuMoi.js
 const mongoose = require("mongoose");
 
 const ThuMoiSchema = new mongoose.Schema({
-  accountId: {
-    type: mongoose.Schema.Types.ObjectId,
+  // Tham chiếu đến Account
+  account: { 
+    type: mongoose.Schema.Types.ObjectId, 
     ref: "Account",
-    required: true,
+    required: true 
   },
-  imageUrl: {
+  // URL ảnh trả về từ Cloudinary
+  imageUrl: { 
+    type: String, 
+    required: true 
+  },
+  // Nếu cần lưu public_id để xoá hoặc xử lý sau
+  cloudinary_id: {
     type: String,
-    required: true,
   },
-  createdAt: {
-    type: Date,
-    default: Date.now,
-  },
+  // Ngày tạo thư mời
+  createdAt: { 
+    type: Date, 
+    default: Date.now 
+  }
 });
 
 module.exports = mongoose.model("ThuMoi", ThuMoiSchema);

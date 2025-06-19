@@ -1,8 +1,16 @@
+// routes/thuMoiRoutes.js
 const express = require("express");
 const router = express.Router();
-const { uploadThuMoi } = require("../controllers/thuMoiController");
-const { verifyToken } = require("../middleware/authMiddleware"); // middleware xác thực
+const upload = require("../config/multer");
+const thuMoiCtrl = require("../controllers/thuMoiController");
 
-router.post("/upload", verifyToken, uploadThuMoi);
+// Tạo mới
+router.post(
+  "/",
+  upload.single("image"),
+  thuMoiCtrl.createThuMoi
+);
+
+
 
 module.exports = router;

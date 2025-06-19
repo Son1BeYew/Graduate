@@ -1,76 +1,10 @@
-<div style="
-    position: relative;
-    width: 100%;
-    max-width: 1800px;
-    min-height: 600px;
-    margin: -150px auto;
-    padding: 40px;
-    left: -14%;
-    border-radius: 16px;
-    background-image: url('./images/backgroundThuMoi.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
-  ">
-  <div style="
-      position: absolute;
-      top: 120px;
-      left: 20%;
-      transform: translate(-50%, 0);
-      width: 250px;
-      height: 250px;
-      position: relative;
-    ">
-    <!-- Ảnh người dùng upload -->
-    <img id="previewImage" src="" alt="" style="
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 1;
-        background-color: white;
-      " />
-
-    <!-- Khung PNG đúng kích thước -->
-    <img src="./images/khungThuMoi.png" alt="" style="
-        width: 350px;
-        height: 350px;
-        object-fit: cover;
-        position: absolute;
-        top: -50px;
-        left: -50px;
-        z-index: 2;
-        pointer-events: none;
-      " />
-  </div>
-</div>
-
-<!-- NÚT TẢI ẢNH -->
-<div style="position: relative; width: 100%; text-align: center; margin-top: 40px">
-  <button onclick="document.getElementById('uploadAvatar').click()" style="
-      padding: 10px 20px;
-      font-size: 16px;
-      border: none;
-      margin-top: 150px;
-      margin-left: -1200px;
-      border-radius: 8px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-    ">
-    Tải ảnh lên
-  </button>
-  <input id="uploadAvatar" type="file" accept="image/*" style="display: none" />
-</div>
-=======
-<div id="thuMoiContent" style="padding: 30px; font-family: 'Roboto', sans-serif">
-  <h2 style="font-size: 24px; color: #c62828; margin-bottom: 20px">
-    🎓 Thư Mời Tham Dự Lễ Tốt Nghiệp
-  </h2>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Thư Mời Tốt Nghiệp</title>
+</head>
+<body style="font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 30px;">
 
   <div style="
       border: 2px dashed red;
@@ -78,30 +12,23 @@
       background-color: #fff0f0;
       color: #b30000;
       font-weight: bold;
-      margin-bottom: 25px;
-    ">
-    ⚠️ Cảnh báo: Vui lòng không sử dụng ảnh nhạy cảm hoặc vi phạm chính sách.
-    Nội dung thư mời sẽ được hiển thị công khai.
+      margin-bottom: 25px;">
+    ⚠️ Cảnh báo: Vui lòng không sử dụng ảnh nhạy cảm hoặc vi phạm chính sách. Nội dung thư mời sẽ được hiển thị công khai.
   </div>
 
   <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px">
     Trân trọng kính mời
-    <strong><span id="studentName">[Họ tên sinh viên]</span></strong> đến tham
-    dự <strong>Lễ Tốt Nghiệp năm 2025</strong> do Trường Đại học Công nghệ
-    TP.HCM (HUTECH) tổ chức.
+    <strong><span id="studentName">[Họ tên sinh viên]</span></strong> đến tham dự
+    <strong>Lễ Tốt Nghiệp năm 2025</strong> do Trường Đại học Công nghệ TP.HCM (HUTECH) tổ chức.
   </p>
 
   <ul style="font-size: 16px; margin-left: 20px; margin-bottom: 20px">
     <li><strong>Thời gian:</strong> 7:30 - 11:30, Chủ Nhật, ngày 20/07/2025</li>
-    <li>
-      <strong>Địa điểm:</strong> Hội trường A-08.20, Trường HUTECH, 475A Điện
-      Biên Phủ, Q.Bình Thạnh, TP.HCM
-    </li>
+    <li><strong>Địa điểm:</strong> Hội trường A-08.20, Trường HUTECH, 475A Điện Biên Phủ, Q.Bình Thạnh, TP.HCM</li>
   </ul>
 
   <p style="font-size: 16px">
-    Vui lòng mặc trang phục nghiêm túc và đến đúng giờ để buổi lễ diễn ra trang
-    trọng.
+    Vui lòng mặc trang phục nghiêm túc và đến đúng giờ để buổi lễ diễn ra trang trọng.
   </p>
 
   <!-- Chọn ảnh + Lưu -->
@@ -114,8 +41,7 @@
         color: #fff;
         border: none;
         border-radius: 6px;
-        cursor: pointer;
-      ">
+        cursor: pointer;">
       Lưu ảnh
     </button>
     <br />
@@ -123,66 +49,79 @@
         margin-top: 20px;
         max-width: 300px;
         border-radius: 12px;
-        display: none;
-      " />
+        display: none;" />
   </div>
-</div>
 
-<script>
-  // Gán tên sinh viên
-  setTimeout(() => {
-    const data = localStorage.getItem("studentInfo");
-    if (data) {
-      try {
-        const student = JSON.parse(data);
-        const nameSpan = document.getElementById("studentName");
-        if (student?.fullname && nameSpan) {
-          nameSpan.textContent = student.fullname;
+  <script>
+    window.onload = function () {
+      const input = document.getElementById("avatarInput");
+      const preview = document.getElementById("previewAvatar");
+      const saveBtn = document.getElementById("saveAvatarBtn");
+      const nameSpan = document.getElementById("studentName");
 
-          // Nếu có ảnh cũ
-          if (student.avatar) {
-            const preview = document.getElementById("previewAvatar");
-            preview.src = student.avatar;
-            preview.style.display = "block";
-          }
-        }
-      } catch (e) {
-        console.error("Lỗi đọc studentInfo:", e);
-      }
-    }
-  }, 100);
-
-  // Preview và Lưu ảnh
-  setTimeout(() => {
-    const input = document.getElementById("avatarInput");
-    const preview = document.getElementById("previewAvatar");
-    const saveBtn = document.getElementById("saveAvatarBtn");
-
-    let tempImage = "";
-
-    input.addEventListener("change", function () {
-      const file = input.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          tempImage = e.target.result;
-          preview.src = tempImage;
-          preview.style.display = "block";
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-
-    saveBtn.addEventListener("click", function () {
-      if (!tempImage) {
-        alert("Vui lòng chọn ảnh trước khi lưu.");
+      if (!input || !preview || !saveBtn || !nameSpan) {
+        console.error("❌ Không tìm thấy phần tử HTML cần thiết.");
         return;
       }
+
       const data = localStorage.getItem("studentInfo");
       let student = data ? JSON.parse(data) : {};
-      student.avatar = tempImage;
-      localStorage.setItem("studentInfo", JSON.stringify(student));
-      alert("Đã lưu ảnh thành công!");
-    });
-  }, 300);
-</script>
+      const accountId = student?.accountId;
+
+      if (student?.fullname) {
+        nameSpan.textContent = student.fullname;
+      }
+
+      let tempImage = "";
+
+      input.addEventListener("change", function () {
+        const file = input.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function (e) {
+            tempImage = e.target.result;
+            preview.src = tempImage;
+            preview.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      saveBtn.addEventListener("click", async function () {
+        if (!tempImage) {
+          alert("Vui lòng chọn ảnh trước khi lưu.");
+          return;
+        }
+
+        if (!accountId) {
+          alert("❌ Không tìm thấy accountId sinh viên.");
+          return;
+        }
+
+        try {
+          const res = await fetch("http://localhost:5000/api/thu-moi/upload-anh", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              accountId: accountId,
+              imageBase64: tempImage,
+            }),
+          });
+
+          const result = await res.json();
+          if (result.success) {
+            alert("✅ Đã lưu ảnh thư mời thành công!");
+            student.thuMoiImage = result.imageUrl;
+            localStorage.setItem("studentInfo", JSON.stringify(student));
+          } else {
+            alert("❌ Lỗi khi lưu ảnh: " + (result.message || ""));
+          }
+        } catch (err) {
+          console.error("❌ Lỗi fetch:", err);
+          alert("❌ Không thể kết nối server.");
+        }
+      });
+    };
+  </script>
+</body>
+</html>
