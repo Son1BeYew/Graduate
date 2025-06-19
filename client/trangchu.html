@@ -74,8 +74,111 @@
     <div class="relative w-full md:w-[600px] lg:w-[700px] flex justify-center md:justify-end mt-[-70px]">
       <img src="..\client\images\AnhTrangChu.png" alt="" class="w-[500px] h-auto object-cover" />
     </div>
-
   </main>
+
+  <section id="graduation-gallery">
+    <h2 class="text-3xl font-extrabold font-bold text-center text-black mb-[100px] mt-[200px]">Khoảnh khắc trong ngày lễ
+      tốt nghiệp
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[40px] w-full px-[60px]">
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/2.jpg" alt="Graduation 1"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/1.jpg" alt="Graduation 2"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/3.jpg" alt="Graduation 3"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/4.jpg" alt="Graduation 4"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/5.jpg" alt="Graduation 5"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/6.jpg" alt="Graduation 6"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/7.jpg" alt="Graduation 7"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/8.jpg" alt="Graduation 8"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+      <div class="opacity-0 transform scale-90 transition duration-700 reveal">
+        <img src="images/9.jpg" alt="Graduation 9"
+          class="w-full h-64 object-cover rounded-lg shadow-md transition-transform duration-300 hover:scale-105 hover:shadow-xl hover:brightness-105 cursor-pointer" />
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-[#005baa] text-white mt-20">
+    <div class="max-w-[1280px] mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Cột 1: Logo và mô tả -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">MÔ TẢ</h3>
+        <p class="text-sm leading-6">Hệ thống đăng ký lễ tốt nghiệp trực tuyến giúp sinh viên đăng ký nhanh chóng và
+          thuận tiện, lưu giữ khoảnh khắc đáng nhớ trong ngày trọng đại.</p>
+        <p class="text-sm leading-6"> Cảm ơn bạn, chúc bạn trải nghiệm phần mềm thật tốt. </p>
+      </div>
+
+      <!-- Cột 2: Liên kết nhanh -->
+      <div>
+        <h3 class="font-bold text-lg mb-4 ml-20">LIÊN KẾT</h3>
+        <ul class="space-y-2 text-sm ml-20">
+          <li><a href="./trangchu.html" class="hover:text-gray-300">Trang Chủ</a></li>
+          <li><a href="thongbao.html" class="hover:text-gray-300">Thông Báo</a></li>
+          <li><a href="hotro.html" class="hover:text-gray-300">Hỗ Trợ</a></li>
+          <li><a href="./dangnhap.html" class="hover:text-gray-300">Đăng Nhập</a></li>
+        </ul>
+      </div>
+
+      <!-- Cột 3: Thông tin liên hệ -->
+      <div>
+        <h3 class="font-bold text-lg mb-4">PHÒNG CÔNG TÁC SINH VIÊN - HUTECH</h3>
+        <ul class="text-sm space-y-2">
+          <li><i class="fas fa-map-marker-alt mr-2"></i>475A Điện Biên Phủ, P.25, Q.Bình Thạnh, TP.HCM
+          </li>
+          <li><i class="fas fa-phone-alt mr-2"></i>0819 500 591 - 028 3512 0785</li>
+          <li><i class="fas fa-envelope mr-2"></i>congtacsinhvien@hutech.edu.vn</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bg-[#004080] text-center py-4 text-sm">
+      © 2025 HUTECH - Trường Đại học Công nghệ TP.HCM.
+    </div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove('opacity-0', 'scale-90');
+          entry.target.classList.add('opacity-100', 'scale-100');
+        } else {
+          entry.target.classList.remove('opacity-100', 'scale-100');
+          entry.target.classList.add('opacity-0', 'scale-90');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    reveals.forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+
 </body>
 
 </html>
