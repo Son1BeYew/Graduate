@@ -1,16 +1,9 @@
-// routes/thuMoiRoutes.js
 const express = require("express");
 const router = express.Router();
 const upload = require("../config/multer");
-const thuMoiCtrl = require("../controllers/thuMoiController");
+const { uploadThuMoi, getThuMoi } = require("../controllers/thuMoiController");
 
-// Tạo mới
-router.post(
-  "/",
-  upload.single("image"),
-  thuMoiCtrl.createThuMoi
-);
-
-
+router.post("/upload", upload.single("image"), uploadThuMoi);
+router.get("/", getThuMoi); // ← thêm dòng này
 
 module.exports = router;

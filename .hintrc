@@ -3,27 +3,13 @@
     "development"
   ],
   "hints": {
-<<<<<<< HEAD
-    "no-inline-styles": "off",
-    "meta-viewport": "off",
-=======
     "meta-viewport": "off",
     "no-inline-styles": "off",
->>>>>>> 86b05dca2ca0562c416e4e32cd4a7538e9b0f5d2
     "axe/text-alternatives": [
       "default",
       {
         "document-title": "off"
       }
-<<<<<<< HEAD
-=======
-    ],
-    "axe/forms": [
-      "default",
-      {
-        "label": "off"
-      }
->>>>>>> 86b05dca2ca0562c416e4e32cd4a7538e9b0f5d2
     ]
   }
 }

@@ -1,127 +1,82 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8" />
-  <title>Thư Mời Tốt Nghiệp</title>
-</head>
-<body style="font-family: Arial, sans-serif; max-width: 800px; margin: auto; padding: 30px;">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thư Mời Tốt Nghiệp</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+    "
+  >
+    <div
+      style="
+        border: 2px dashed red;
+        padding: 15px;
+        background-color: #fff0f0;
+        color: #b30000;
+        font-weight: bold;
+        margin-bottom: 25px;
+      "
+    >
+      ⚠️ Cảnh báo: Vui lòng không sử dụng ảnh nhạy cảm hoặc vi phạm chính sách.
+      Nội dung thư mời sẽ được hiển thị công khai.
+    </div>
 
-  <div style="
-      border: 2px dashed red;
-      padding: 15px;
-      background-color: #fff0f0;
-      color: #b30000;
-      font-weight: bold;
-      margin-bottom: 25px;">
-    ⚠️ Cảnh báo: Vui lòng không sử dụng ảnh nhạy cảm hoặc vi phạm chính sách. Nội dung thư mời sẽ được hiển thị công khai.
-  </div>
+    <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px">
+      Trân trọng kính mời
+      <strong><span id="studentName">[Họ tên sinh viên]</span></strong> đến tham
+      dự <strong>Lễ Tốt Nghiệp năm 2025</strong> do Trường Đại học Công nghệ
+      TP.HCM (HUTECH) tổ chức.
+    </p>
 
-  <p style="font-size: 16px; line-height: 1.8; margin-bottom: 20px">
-    Trân trọng kính mời
-    <strong><span id="studentName">[Họ tên sinh viên]</span></strong> đến tham dự
-    <strong>Lễ Tốt Nghiệp năm 2025</strong> do Trường Đại học Công nghệ TP.HCM (HUTECH) tổ chức.
-  </p>
+    <ul style="font-size: 16px; margin-left: 20px; margin-bottom: 20px">
+      <li>
+        <strong>Thời gian:</strong> 7:30 - 11:30, Chủ Nhật, ngày 20/07/2025
+      </li>
+      <li>
+        <strong>Địa điểm:</strong> Hội trường A-08.20, Trường HUTECH, 475A Điện
+        Biên Phủ, Q.Bình Thạnh, TP.HCM
+      </li>
+    </ul>
 
-  <ul style="font-size: 16px; margin-left: 20px; margin-bottom: 20px">
-    <li><strong>Thời gian:</strong> 7:30 - 11:30, Chủ Nhật, ngày 20/07/2025</li>
-    <li><strong>Địa điểm:</strong> Hội trường A-08.20, Trường HUTECH, 475A Điện Biên Phủ, Q.Bình Thạnh, TP.HCM</li>
-  </ul>
+    <p style="font-size: 16px">
+      Vui lòng mặc trang phục nghiêm túc và đến đúng giờ để buổi lễ diễn ra
+      trang trọng.
+    </p>
 
-  <p style="font-size: 16px">
-    Vui lòng mặc trang phục nghiêm túc và đến đúng giờ để buổi lễ diễn ra trang trọng.
-  </p>
-
-  <!-- Chọn ảnh + Lưu -->
-  <div style="margin-top: 30px; text-align: center">
-    <input type="file" accept="image/*" id="avatarInput" />
-    <button id="saveAvatarBtn" style="
-        margin-left: 10px;
-        padding: 6px 16px;
-        background-color: #0d6efd;
-        color: #fff;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;">
-      Lưu ảnh
-    </button>
-    <br />
-    <img id="previewAvatar" src="" alt="Ảnh thư mời" style="
-        margin-top: 20px;
-        max-width: 300px;
-        border-radius: 12px;
-        display: none;" />
-  </div>
-
-  <script>
-    window.onload = function () {
-      const input = document.getElementById("avatarInput");
-      const preview = document.getElementById("previewAvatar");
-      const saveBtn = document.getElementById("saveAvatarBtn");
-      const nameSpan = document.getElementById("studentName");
-
-      if (!input || !preview || !saveBtn || !nameSpan) {
-        console.error("❌ Không tìm thấy phần tử HTML cần thiết.");
-        return;
-      }
-
-      const data = localStorage.getItem("studentInfo");
-      let student = data ? JSON.parse(data) : {};
-      const accountId = student?.accountId;
-
-      if (student?.fullname) {
-        nameSpan.textContent = student.fullname;
-      }
-
-      let tempImage = "";
-
-      input.addEventListener("change", function () {
-        const file = input.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = function (e) {
-            tempImage = e.target.result;
-            preview.src = tempImage;
-            preview.style.display = "block";
-          };
-          reader.readAsDataURL(file);
-        }
-      });
-
-      saveBtn.addEventListener("click", async function () {
-        if (!tempImage) {
-          alert("Vui lòng chọn ảnh trước khi lưu.");
-          return;
-        }
-
-        if (!accountId) {
-          alert("❌ Không tìm thấy accountId sinh viên.");
-          return;
-        }
-
-        try {
-          const res = await fetch("http://localhost:5000/api/thu-moi/upload-anh", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              accountId: accountId,
-              imageBase64: tempImage,
-            }),
-          });
-
-          const result = await res.json();
-          if (result.success) {
-            alert("✅ Đã lưu ảnh thư mời thành công!");
-            student.thuMoiImage = result.imageUrl;
-            localStorage.setItem("studentInfo", JSON.stringify(student));
-          } else {
-            alert("❌ Lỗi khi lưu ảnh: " + (result.message || ""));
-          }
-        } catch (err) {
-          console.error("❌ Lỗi fetch:", err);
-          alert("❌ Không thể kết nối server.");
-        }
-      });
-    };
-  </script>
-</body>
+    <!-- Chọn ảnh + Lưu -->
+    <div style="margin-top: 30px; text-align: center">
+      <input type="file" accept="image/*" id="avatarInput" />
+      <button
+        id="saveAvatarBtn"
+        style="
+          margin-left: 10px;
+          padding: 6px 16px;
+          background-color: #0d6efd;
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+        "
+      >
+        Lưu ảnh
+      </button>
+      <br />
+      <img
+        id="previewAvatar"
+        src=""
+        alt="Ảnh thư mời"
+        style="
+          margin-top: 20px;
+          max-width: 300px;
+          border-radius: 12px;
+          display: none;
+        "
+      />
+    </div>
+  </body>
 </html>

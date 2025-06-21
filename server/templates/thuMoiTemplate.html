@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thư Mời</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <div style="
+    position: relative;
+    width: 100%;
+    max-width: 1800px;
+    min-height: 600px;
+    margin: -150px auto;
+    padding: 40px;
+    left: -14%;
+    border-radius: 16px;
+    background-image: url('https://your-domain.com/images/backgroundThuMoi.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  ">
+    <div style="
+      position: absolute;
+      top: 120px;
+      left: 20%;
+      transform: translate(-50%, 0);
+      width: 250px;
+      height: 250px;
+      position: relative;
+    ">
+      <img src="{{imageUrl}}" style="
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: white;
+      " />
+      <img src="https://your-domain.com/images/khungThuMoi.png" style="
+        width: 350px;
+        height: 350px;
+        object-fit: cover;
+        position: absolute;
+        top: -50px;
+        left: -50px;
+        z-index: 2;
+        pointer-events: none;
+      " />
+    </div>
+  </div>
+</body>
+</html>
